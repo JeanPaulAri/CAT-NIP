@@ -358,4 +358,4 @@ hframes = 8
 vframes = 3
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("5_qdmbw")]
-position = Vector2(728, 245)
+position = Vector2(628, 286)

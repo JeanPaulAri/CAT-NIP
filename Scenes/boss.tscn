@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqvrgx7tguddc"]
+[gd_scene load_steps=15 format=3 uid="uid://cqvrgx7tguddc"]
 
 [ext_resource type="Script" path="res://Scripts/boss.gd" id="1_02l37"]
 [ext_resource type="Texture2D" uid="uid://dbu7v2mm2plk" path="res://Assets/Boss/Crystal Knight.png" id="1_bjapl"]
@@ -72,6 +72,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [Vector2i(1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Label:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_6ps78"]
 resource_name = "Teleport"
@@ -107,6 +119,22 @@ tracks/0/keys = {
 "values": [Vector2i(4, 3), Vector2i(3, 3), Vector2i(2, 3), Vector2i(1, 3), Vector2i(0, 3)]
 }
 
+[sub_resource type="Animation" id="Animation_rqene"]
+resource_name = "boss"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.3, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.686275), Color(1, 1, 1, 0.878431), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k700b"]
 _data = {
 "Ataque Der": SubResource("Animation_c77je"),
@@ -114,7 +142,8 @@ _data = {
 "Idle": SubResource("Animation_tbctc"),
 "RESET": SubResource("Animation_4m58e"),
 "Teleport": SubResource("Animation_6ps78"),
-"Tp Regreso": SubResource("Animation_uord6")
+"Tp Regreso": SubResource("Animation_uord6"),
+"boss": SubResource("Animation_rqene")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6uhu1"]
@@ -123,6 +152,8 @@ radius = 52.9528
 [node name="Boss" type="CharacterBody2D"]
 position = Vector2(-3, -1)
 scale = Vector2(5, 5)
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_02l37")
 
 [node name="IdleSprite" type="Sprite2D" parent="."]
@@ -160,8 +191,61 @@ script = ExtResource("4_5hjfe")
 [node name="cola" type="Node2D" parent="FSM"]
 script = ExtResource("4_5hjfe")
 
+[node name="follow" type="Node2D" parent="FSM"]
+script = ExtResource("4_5hjfe")
+
 [node name="Player Detecction" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player Detecction"]
+unique_name_in_owner = true
 position = Vector2(3, 1)
 shape = SubResource("CircleShape2D_6uhu1")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="UI"]
+visible = false
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.533
+offset_left = -16.5
+offset_top = -21.5
+offset_right = 16.5
+offset_bottom = 0.115967
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+
+[node name="Label" type="Label" parent="UI/ProgressBar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.5
+offset_top = -26.5
+offset_right = 25.5
+offset_bottom = -3.5
+grow_horizontal = 2
+text = "Ratata"
+
+[node name="Label" type="Label" parent="UI"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -31.0
+offset_top = 207.0
+offset_right = 35.0
+offset_bottom = 230.0
+text = "Boss Rat"
+
+[node name="debug" type="Label" parent="."]
+offset_left = -22.0
+offset_top = -61.0
+offset_right = 28.0
+offset_bottom = -38.0
+theme_override_font_sizes/font_size = 0
+text = "Debug"
+
+[connection signal="body_entered" from="Player Detecction" to="FSM/Idle" method="_on_player_detecction_body_entered"]

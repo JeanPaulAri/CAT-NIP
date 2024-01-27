@@ -8,7 +8,7 @@ func _ready():
 	previus_state = current_state
 	current_state.enter()
 	
-func change_state(state):
+func changse_state(state):
 	if state == previus_state.name:
 		return
 	current_state =  find_child(state) as State

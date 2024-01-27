@@ -12,8 +12,10 @@ func enter():
 
 func exit():
 	set_physics_process(false)
+	
 func transition():
 	pass
+
 func _physics_process(_delta):
 	transition()
 	debug.text=name
