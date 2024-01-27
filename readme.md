@@ -1,5 +1,5 @@
 # Cat Nip
-DEVELOPMENT BRANCH
+MASTER  BRANCH
 ## Descripción
 Cat Nip es un juego desarrollado con Godot Engine.
 
