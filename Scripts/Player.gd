@@ -21,7 +21,6 @@ var isAttacking=false
 func _ready():
 		animationPlayer.play(currentDirection) 
 		print("Player Cargado con Exito")
-		
 		 
 func _physics_process(delta):
 
