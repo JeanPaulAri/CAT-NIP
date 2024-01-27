@@ -37,9 +37,9 @@ func attack():
 		IdleSprite.visible = false
 		WalkSprite.visible = false
 		$Area2D/CollisionShape2D.disabled=false
-		if(direction_x == 1):
+		if(currentDirection == "IdleRight"):
 			animationPlayer.play("AttackRight")
-		else:
+		elif(currentDirection == "IdleLeft"):
 			animationPlayer.play("AttackLeft")
 	else:
 		AttackSprite.visible=false
