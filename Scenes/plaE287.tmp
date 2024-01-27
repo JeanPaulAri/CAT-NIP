@@ -8,14 +8,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ok4fa"]
 size = Vector2(15, 22)
 
-[sub_resource type="Animation" id="Animation_fr0xr"]
-length = 0.001
 [sub_resource type="Animation" id="Animation_koxmt"]
 resource_name = "AttackLeft"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WalkSprites:frame")
 tracks/0/path = NodePath("Attack(temporal):frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
