@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://cgttdoic0ioj8"]
+
+[gd_scene load_steps=14 format=3 uid="uid://cqvrgx7tguddc"]
 
 [ext_resource type="Script" path="res://Scripts/boss.gd" id="1_02l37"]
-[ext_resource type="Texture2D" path="res://Assets/Boss/Crystal Knight.png" id="1_bjapl"]
+[ext_resource type="Texture2D" uid="uid://dbu7v2mm2plk" path="res://Assets/Boss/Crystal Knight.png" id="1_bjapl"]
 [ext_resource type="Script" path="res://Scenes/FSM.gd" id="3_ee4we"]
 [ext_resource type="Script" path="res://Scripts/state.gd" id="4_5hjfe"]
 
