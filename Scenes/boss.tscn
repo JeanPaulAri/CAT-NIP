@@ -140,6 +140,7 @@ shape = SubResource("CircleShape2D_nvwjm")
 libraries = {
 "": SubResource("AnimationLibrary_k700b")
 }
+autoplay = "Idle"
 
 [node name="FSM" type="Node2D" parent="."]
 script = ExtResource("3_ee4we")
