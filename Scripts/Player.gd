@@ -11,6 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 # 0 Left, 1 Right, 2 Up, 3 Down /////// Idle -> 0I
 
 var currentDirection = "IdleDown"
+var isAttacking=false
 
 @onready var WalkSprite = $WalkSprites
 @onready var IdleSprite = $IdleSprites
@@ -29,7 +30,8 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-	movePlayer()
+	if(isAttacking!=true):
+		movePlayer()
 	attack()
 
 func attack():
@@ -38,17 +40,24 @@ func attack():
 		AttackSprite.visible=true
 		IdleSprite.visible = false
 		WalkSprite.visible = false
-		$Area2D/CollisionShape2D.disabled=false
 		if(currentDirection == "IdleRight"):
 			animationPlayer.play("AttackRight")
+			isAttacking=true
+			$ColisionAtaque/ColisionDerecha.disabled=false
+			await animationPlayer.animation_finished
+			$ColisionAtaque/ColisionDerecha.disabled=true
 		elif(currentDirection == "IdleLeft"):
 			animationPlayer.play("AttackLeft")
+			isAttacking=true
+			$ColisionAtaque/ColisionIzquierda.disabled=false
+			await animationPlayer.animation_finished
+			$ColisionAtaque/ColisionDerecha.disabled=true
 	else:
 		AttackSprite.visible=false
-		$Area2D/CollisionShape2D.disabled=true
+		isAttacking=false
 
 func idleToWaleSprite():
-	print("xd")
+	#print("xd")
 	WalkSprite.visible = IdleSprite.visible
 	IdleSprite.visible = not IdleSprite.visible
 
@@ -64,23 +73,23 @@ func movePlayer():
 	if direction_x:
 		IdleSprite.visible = false
 		WalkSprite.visible =true
-		if(direction_x == 1):
+		if(direction_x == 1 and isAttacking==false):
 			animationPlayer.play("Right") 
 			currentDirection="IdleRight"
-		else:
+		elif(direction_x==-1 and isAttacking==false):
 			animationPlayer.play("Left") 
 			currentDirection="IdleLeft"
 		velocity.x = direction_x * SPEED 
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-	print(position.y)
+	#print(position.y)
 	if direction_y:
 		WalkSprite.visible =true
 		IdleSprite.visible = false
 		velocity.y =  direction_y * SPEED 
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
-	if (not Input.is_anything_pressed()):
+	if (not Input.is_anything_pressed() and isAttacking==false):
 		IdleSprite.visible = true
 		WalkSprite.visible = false
 		animationPlayer.play(currentDirection)
