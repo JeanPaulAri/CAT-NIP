@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://3jshgahd05ss"]
+[gd_scene load_steps=22 format=3 uid="uid://3jshgahd05ss"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_6ijwa"]
 [ext_resource type="Texture2D" uid="uid://k14tpapuwu82" path="res://Assets/Player/run.png" id="2_oj8ud"]
@@ -6,69 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dlo50ux1hc8n2" path="res://Assets/Player/attack and die.png" id="4_rdvkt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ok4fa"]
-size = Vector2(9.4, 20.7)
-
-[sub_resource type="Animation" id="Animation_koxmt"]
-resource_name = "AttackLeft"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Attack(temporal):frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-
-[sub_resource type="Animation" id="Animation_bafae"]
-resource_name = "AttackRight"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Attack(temporal):frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [10, 11, 12, 13, 14, 15]
-}
-
-[sub_resource type="Animation" id="Animation_ilku2"]
-resource_name = "DieLeft"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Attack(temporal):frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [5, 6, 7, 8, 9]
-}
-
-[sub_resource type="Animation" id="Animation_accy6"]
-resource_name = "DieRight"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Attack(temporal):frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [15, 16, 17, 18, 19, 19]
-}
+size = Vector2(15, 22)
 
 [sub_resource type="Animation" id="Animation_use8j"]
 resource_name = "Down"
@@ -260,6 +198,66 @@ tracks/0/keys = {
 "values": [10, 11, 12, 13, 14, 14, 15]
 }
 
+[sub_resource type="Animation" id="Animation_bafae"]
+resource_name = "AttackRight"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Attack(temporal):frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_koxmt"]
+resource_name = "AttackLeft"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Attack(temporal):frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_ilku2"]
+resource_name = "DieLeft"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Attack(temporal):frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_accy6"]
+resource_name = "DieRight"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Attack(temporal):frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 16, 17, 18, 19, 19]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6dals"]
 _data = {
 "AttackLeft": SubResource("Animation_koxmt"),
@@ -281,16 +279,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fviy0"]
 size = Vector2(9.4625, 8.1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0lslo"]
-size = Vector2(8.7, 8.9)
-
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(10, 10)
 script = ExtResource("1_6ijwa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(24.7, 12.35)
-scale = Vector2(1, 1)
+position = Vector2(25.5, 13)
 shape = SubResource("RectangleShape2D_ok4fa")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -317,17 +311,11 @@ hframes = 5
 vframes = 4
 frame = 10
 
-[node name="ColisionAtaque" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="ColisionDerecha" type="CollisionShape2D" parent="ColisionAtaque"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(37.5687, 16.6)
 shape = SubResource("RectangleShape2D_fviy0")
 disabled = true
 
-[node name="ColisionIzquierda" type="CollisionShape2D" parent="ColisionAtaque"]
-position = Vector2(13.5, 16.3)
-scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_0lslo")
-disabled = true
-
-[connection signal="body_entered" from="ColisionAtaque" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
