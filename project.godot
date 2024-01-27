@@ -14,6 +14,7 @@ config/name="Cat-nip"
 run/main_scene="res://Scenes/white_room_2.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+<<<<<<<HEADconfig/name="Cat-nip"
 
 [autoload]
 

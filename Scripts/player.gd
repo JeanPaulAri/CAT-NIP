@@ -114,16 +114,7 @@ func MoveCamera():
 	pass
 
 func _on_attack_left_body_entered(body):
-	print("GAY")
-	if body.is_in_group("enemy"):
-		print("MUTAMA")
-		body.take_damage(damage)
-	else:
-		pass
+	body.take_damage(damage)
 
 func _on_attack_right_body_entered(body):
-	if body.is_in_group("enemy"):
-		print("MUTAMA")
-		body.take_damage(damage)
-	else:
-		pass
+	body.take_damage(damage)

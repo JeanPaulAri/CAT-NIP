@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ewbu1qcafjt1" path="res://Assets/Map/Tileset.png" id="1_axp2y"]
 [ext_resource type="PackedScene" uid="uid://3jshgahd05ss" path="res://Scenes/player.tscn" id="2_43e6h"]
-[ext_resource type="Script" path="res://Scenes/RigidBody2D.gd" id="3_1qbw8"]
+[ext_resource type="Script" path="res://Scripts/RigidBody2D.gd" id="3_1qbw8"]
 [ext_resource type="Texture2D" uid="uid://bpdoxa4m23o1k" path="res://Assets/Player/walk and idle.png" id="3_jgrjm"]
 [ext_resource type="PackedScene" uid="uid://cqvrgx7tguddc" path="res://Scenes/boss.tscn" id="5_qdmbw"]
 
