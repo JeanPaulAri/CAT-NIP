@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://3jshgahd05ss"]
+[gd_scene load_steps=18 format=3 uid="uid://3jshgahd05ss"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_6ijwa"]
 [ext_resource type="Texture2D" uid="uid://k14tpapuwu82" path="res://Assets/Player/run.png" id="2_oj8ud"]
@@ -183,7 +183,46 @@ _data = {
 "Up": SubResource("Animation_o3foa")
 }
 
+[sub_resource type="Animation" id="Animation_pqoat"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_66igc"]
+resource_name = "zoom"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(10, 0), Vector2(10, 10), Vector2(0, 10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nm4iw"]
+_data = {
+"RESET": SubResource("Animation_pqoat"),
+"agitar": SubResource("Animation_66igc")
+}
+
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(224, 418)
 scale = Vector2(10, 10)
 script = ExtResource("1_6ijwa")
 
@@ -207,3 +246,19 @@ frame = 12
 position = Vector2(26, 8)
 texture = ExtResource("3_5pefk")
 hframes = 24
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(26.4, 11.8)
+rotation = 1.05069
+scale = Vector2(-331.085, 312.074)
+limit_left = 0
+limit_top = 0
+limit_bottom = 720
+limit_smoothed = true
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="AnimationCamera" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nm4iw")
+}
