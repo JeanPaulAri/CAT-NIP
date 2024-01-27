@@ -285,12 +285,13 @@ size = Vector2(9.4625, 8.1)
 size = Vector2(8.7, 8.9)
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(107, 38)
 scale = Vector2(10, 10)
 collision_layer = 3
 script = ExtResource("1_6ijwa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(7.4, 10.3)
+position = Vector2(0.900001, 0.700001)
 shape = SubResource("RectangleShape2D_ok4fa")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -299,18 +300,18 @@ libraries = {
 }
 
 [node name="WalkSprites" type="Sprite2D" parent="."]
-position = Vector2(7.7, 6)
+position = Vector2(0.6, -3.8)
 texture = ExtResource("2_oj8ud")
 hframes = 24
 frame = 12
 
 [node name="IdleSprites" type="Sprite2D" parent="."]
-position = Vector2(6.6, 6.7)
+position = Vector2(1, -4)
 texture = ExtResource("3_5pefk")
 hframes = 24
 
 [node name="Attack(temporal)" type="Sprite2D" parent="."]
-position = Vector2(-6.2, -3.3)
+position = Vector2(-12.3, -11.6)
 texture = ExtResource("4_rdvkt")
 centered = false
 hframes = 5
@@ -318,14 +319,15 @@ vframes = 4
 frame = 10
 
 [node name="ColisionAtaque" type="Area2D" parent="."]
+position = Vector2(0, 3.4)
 
 [node name="ColisionDerecha" type="CollisionShape2D" parent="ColisionAtaque"]
-position = Vector2(18.3, 13.4)
+position = Vector2(10.4, 2.4)
 shape = SubResource("RectangleShape2D_fviy0")
 disabled = true
 
 [node name="ColisionIzquierda" type="CollisionShape2D" parent="ColisionAtaque"]
-position = Vector2(-2.4, 14.5)
+position = Vector2(-8.6, 0.800001)
 shape = SubResource("RectangleShape2D_0lslo")
 disabled = true
 
