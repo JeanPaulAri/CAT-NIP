@@ -12,6 +12,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var currentDirection = "IdleDown"
 var isAttacking=false
+var isAlive=true
+var playerHP=100
+var damage=50
 
 @onready var WalkSprite = $WalkSprites
 @onready var IdleSprite = $IdleSprites
@@ -23,15 +26,32 @@ func _ready():
 		print("Player Cargado con Exito")
 		 
 func _physics_process(delta):
+	if isAlive:
+		if not is_on_floor():
+			velocity.y += gravity * delta
 
-	if not is_on_floor():
-		velocity.y += gravity * delta
+		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
+		if(isAttacking!=true):
+			movePlayer()
+		attack()
+	else:
+		die()
 
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	if(isAttacking!=true):
-		movePlayer()
-	attack()
+func take_damage(damage):
+	print("Player HP: "+str(playerHP))
+	playerHP-=damage
+	if playerHP<=0:
+		isAlive=false
+
+func die():
+	AttackSprite.visible=true
+	IdleSprite.visible = false
+	WalkSprite.visible = false
+	if(currentDirection == "IdleRight"):
+		animationPlayer.play("DieRight")
+	else:
+		animationPlayer.play("DieLeft")
 
 func attack():
 	var direction_x = Input.get_axis("ui_left", "ui_right")
@@ -42,15 +62,15 @@ func attack():
 		if(currentDirection == "IdleRight"):
 			animationPlayer.play("AttackRight")
 			isAttacking=true
-			$ColisionAtaque/ColisionDerecha.disabled=false
+			$AreaDerecha/ColisionDerecha.disabled=false
 			await animationPlayer.animation_finished
-			$ColisionAtaque/ColisionDerecha.disabled=true
+			$AreaDerecha/ColisionDerecha.disabled=true
 		elif(currentDirection == "IdleLeft"):
 			animationPlayer.play("AttackLeft")
 			isAttacking=true
-			$ColisionAtaque/ColisionIzquierda.disabled=false
+			$AreaIzquierda/ColisionIzquierda.disabled=false
 			await animationPlayer.animation_finished
-			$ColisionAtaque/ColisionDerecha.disabled=true
+			$AreaIzquierda/ColisionIzquierda.disabled=true
 	else:
 		AttackSprite.visible=false
 		isAttacking=false
@@ -59,12 +79,6 @@ func idleToWaleSprite():
 	#print("xd")
 	WalkSprite.visible = IdleSprite.visible
 	IdleSprite.visible = not IdleSprite.visible
-
-func _on_area_2d_body_entered(body):
-	if body.is_in_group("HIT"):
-		body.takeDamage()
-	else:
-		pass
 
 func movePlayer():
 	var direction_x = Input.get_axis("ui_left", "ui_right")
@@ -96,6 +110,20 @@ func movePlayer():
 	if(position.y <= LIMIT_Y):
 		position.y = LIMIT_Y
 
-
 func MoveCamera():
 	pass
+
+func _on_attack_left_body_entered(body):
+	print("GAY")
+	if body.is_in_group("enemy"):
+		print("MUTAMA")
+		body.take_damage(damage)
+	else:
+		pass
+
+func _on_attack_right_body_entered(body):
+	if body.is_in_group("enemy"):
+		print("MUTAMA")
+		body.take_damage(damage)
+	else:
+		pass

@@ -5,13 +5,15 @@ var player_chase:bool = false
 var player=null
 var enemy_attack:bool = false
 var enemy_Direction="Null"
+var damage=50
+var HealthPoints=100
+var isAlive:bool=true
 
 @onready var moveSprites = $Movement
 @onready var animationPlayer = $AnimationPlayer
 @onready var attackSprites = $Attack
 
 var spriteSize=100
-
 func _physics_process(delta):
 	if player_chase and not enemy_attack:
 		moveSprites.visible=true
@@ -32,13 +34,38 @@ func _physics_process(delta):
 		moveSprites.visible=false
 		attackSprites.visible=true
 		animationPlayer.play("Attack" + enemy_Direction)
+		if enemy_Direction=="Left":
+			$AttackLeft/CollisionAttackLeft.disabled=false
+		elif enemy_Direction=="Right":
+			$AttackRight/CollisionAttackRight.disabled=false
 		await animationPlayer.animation_finished
 		enemy_attack=false
+		$AttackRight/CollisionAttackRight.disabled=true
+		$AttackLeft/CollisionAttackLeft.disabled=true
 		
 	else:
 		animationPlayer.play("IdleLelft")
 
+func take_damage(damage):
+	HealthPoints-=damage
+	print("HP enemigo: "+str(HealthPoints))
+	if HealthPoints<=0:
+		animationPlayer.play("die"+enemy_Direction)
+		await animationPlayer.animation_finished
+	
 
-func _on_area_2d_body_entered(body):
+func _on_attack_left_body_entered(body):
+	if body.is_in_group("Player"):
+		body.take_damage(damage)
+	else:
+		pass
+
+func _on_deteccion_body_entered(body):
 	player=body # Replace with function body.
 	player_chase=true
+
+func _on_attack_right_body_entered(body):
+	if body.is_in_group("Player"):
+		body.take_damage(damage)
+	else:
+		pass
