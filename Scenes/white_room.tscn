@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://60plikq8qp6i"]
+[gd_scene load_steps=5 format=3 uid="uid://60plikq8qp6i"]
 
 [ext_resource type="Texture2D" uid="uid://ewbu1qcafjt1" path="res://Assets/Map/Tileset.png" id="1_axp2y"]
 [ext_resource type="PackedScene" uid="uid://3jshgahd05ss" path="res://Scenes/player.tscn" id="2_43e6h"]
-[ext_resource type="Texture2D" uid="uid://dbu7v2mm2plk" path="res://Assets/Boss/Crystal Knight.png" id="3_bofwo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_erkjh"]
 texture = ExtResource("1_axp2y")
@@ -336,16 +335,3 @@ layer_0/tile_data = PackedInt32Array(2883584, 524288, 9, 2883585, 524288, 9, 288
 [node name="Player" parent="." instance=ExtResource("2_43e6h")]
 position = Vector2(185, 455)
 scale = Vector2(5, 5)
-
-[node name="Boss" type="CharacterBody2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Boss"]
-position = Vector2(800, 420)
-scale = Vector2(4.74658, 4.74658)
-texture = ExtResource("3_bofwo")
-hframes = 5
-vframes = 5
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Boss"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss"]

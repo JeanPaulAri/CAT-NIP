@@ -1,10 +1,44 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqvrgx7tguddc"]
+[gd_scene load_steps=12 format=3 uid="uid://cqvrgx7tguddc"]
 
 [ext_resource type="Script" path="res://Scripts/boss.gd" id="1_02l37"]
 [ext_resource type="Texture2D" uid="uid://dbu7v2mm2plk" path="res://Assets/Boss/Crystal Knight.png" id="1_bjapl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nvwjm"]
 radius = 26.0192
+
+[sub_resource type="Animation" id="Animation_c77je"]
+resource_name = "Ataque Der"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IdleSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_cll7j"]
+resource_name = "Ataque Iz"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IdleSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_tbctc"]
 resource_name = "Idle"
@@ -37,40 +71,6 @@ tracks/0/keys = {
 "values": [Vector2i(1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_cll7j"]
-resource_name = "Ataque Iz"
-length = 0.7
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("IdleSprite:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_c77je"]
-resource_name = "Ataque Der"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("IdleSprite:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2)]
-}
-
 [sub_resource type="Animation" id="Animation_6ps78"]
 resource_name = "Teleport"
 length = 0.7
@@ -91,7 +91,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_uord6"]
 resource_name = "Tp Regreso"
 length = 0.7
-loop_mode = 2
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -115,6 +115,9 @@ _data = {
 "Tp Regreso": SubResource("Animation_uord6")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6uhu1"]
+radius = 52.9528
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(-3, -1)
 script = ExtResource("1_02l37")
@@ -134,3 +137,21 @@ shape = SubResource("CircleShape2D_nvwjm")
 libraries = {
 "": SubResource("AnimationLibrary_k700b")
 }
+
+[node name="FSM" type="Node2D" parent="."]
+
+[node name="Idle" type="Node2D" parent="FSM"]
+
+[node name="Garra iz" type="Node2D" parent="FSM"]
+
+[node name="Garra der" type="Node2D" parent="FSM"]
+
+[node name="Terleport" type="Node2D" parent="FSM"]
+
+[node name="cola" type="Node2D" parent="FSM"]
+
+[node name="Player Detecction" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player Detecction"]
+position = Vector2(3, 1)
+shape = SubResource("CircleShape2D_6uhu1")
