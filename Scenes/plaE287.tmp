@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://3jshgahd05ss"]
+[gd_scene load_steps=22 format=3 uid="uid://3jshgahd05ss"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_6ijwa"]
 [ext_resource type="Texture2D" uid="uid://k14tpapuwu82" path="res://Assets/Player/run.png" id="2_oj8ud"]
@@ -6,11 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://dlo50ux1hc8n2" path="res://Assets/Player/attack and die.png" id="4_rdvkt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ok4fa"]
-size = Vector2(9.4, 20.7)
+size = Vector2(15, 22)
 
 [sub_resource type="Animation" id="Animation_koxmt"]
 resource_name = "AttackLeft"
-length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -26,7 +25,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_bafae"]
 resource_name = "AttackRight"
-length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -278,83 +276,15 @@ _data = {
 "attack": SubResource("Animation_cg67a")
 }
 
-<<<<<<< HEAD
-[sub_resource type="Animation" id="Animation_pqoat"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera2D:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera2D:zoom")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_66igc"]
-resource_name = "zoom"
-length = 0.3
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera2D:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(10, 0), Vector2(10, 10), Vector2(0, 10)]
-}
-
-[sub_resource type="Animation" id="Animation_pc3l7"]
-resource_name = "zoom"
-length = 0.4
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera2D:zoom")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.02, 1.02), Vector2(1.04, 1.04), Vector2(1.05, 1.05)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_nm4iw"]
-_data = {
-"RESET": SubResource("Animation_pqoat"),
-"agitar": SubResource("Animation_66igc"),
-"zoom": SubResource("Animation_pc3l7")
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fviy0"]
+size = Vector2(9.4625, 8.1)
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(224, 418)
 scale = Vector2(10, 10)
-collision_layer = 3
 script = ExtResource("1_6ijwa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.900001, 0.700001)
+position = Vector2(25.5, 13)
 shape = SubResource("RectangleShape2D_ok4fa")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -363,36 +293,29 @@ libraries = {
 }
 
 [node name="WalkSprites" type="Sprite2D" parent="."]
-position = Vector2(0.6, -3.8)
+position = Vector2(25, 8)
 texture = ExtResource("2_oj8ud")
 hframes = 24
 frame = 12
 
 [node name="IdleSprites" type="Sprite2D" parent="."]
-position = Vector2(1, -4)
+position = Vector2(26, 8)
 texture = ExtResource("3_5pefk")
 hframes = 24
 
 [node name="Attack(temporal)" type="Sprite2D" parent="."]
-position = Vector2(-12.3, -11.6)
+position = Vector2(12, 0)
 texture = ExtResource("4_rdvkt")
 centered = false
 hframes = 5
 vframes = 4
 frame = 10
 
-[node name="ColisionAtaque" type="Area2D" parent="."]
-position = Vector2(0, 3.4)
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="ColisionDerecha" type="CollisionShape2D" parent="ColisionAtaque"]
-position = Vector2(10.4, 2.4)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(37.5687, 16.6)
 shape = SubResource("RectangleShape2D_fviy0")
 disabled = true
 
-[node name="ColisionIzquierda" type="CollisionShape2D" parent="ColisionAtaque"]
-position = Vector2(-8.6, 0.800001)
-shape = SubResource("RectangleShape2D_0lslo")
-disabled = true
-
-[connection signal="body_entered" from="ColisionAtaque" to="." method="_on_area_2d_body_entered"]
-
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
