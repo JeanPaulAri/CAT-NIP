@@ -3,11 +3,13 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+
 const LIMIT_Y = 300
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # 0 Left, 1 Right, 2 Up, 3 Down /////// Idle -> 0I
+
 var currentDirection = "IdleDown"
 
 @onready var WalkSprite = $WalkSprites
@@ -16,7 +18,7 @@ var currentDirection = "IdleDown"
 @onready var AttackSprite = $"Attack(temporal)"
 
 func _ready():
-		animationPlayer.play("IdleDown") 
+		animationPlayer.play(currentDirection) 
 		print("Player Cargado con Exito")
 		
 		 
