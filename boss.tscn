@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=3 uid="uid://cqvrgx7tguddc"]
+
+[ext_resource type="Texture2D" uid="uid://dbu7v2mm2plk" path="res://Assets/Boss/Crystal Knight.png" id="1_xt6bi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nvwjm"]
+radius = 26.0192
+
+[sub_resource type="Animation" id="Animation_tbctc"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IdleSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4m58e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IdleSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cll7j"]
+resource_name = "Ataque Iz"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IdleSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_c77je"]
+resource_name = "Ataque Der"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IdleSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k700b"]
+_data = {
+"Ataque Der": SubResource("Animation_c77je"),
+"Ataque Iz": SubResource("Animation_cll7j"),
+"Idle": SubResource("Animation_tbctc"),
+"RESET": SubResource("Animation_4m58e")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(-3, -1)
+
+[node name="IdleSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+texture = ExtResource("1_xt6bi")
+hframes = 5
+vframes = 5
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 1)
+shape = SubResource("CircleShape2D_nvwjm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k700b")
+}
