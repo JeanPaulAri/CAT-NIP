@@ -120,7 +120,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_6uhu1"]
 radius = 52.9528
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Boss" type="CharacterBody2D"]
 position = Vector2(-3, -1)
 scale = Vector2(5, 5)
 script = ExtResource("1_02l37")
