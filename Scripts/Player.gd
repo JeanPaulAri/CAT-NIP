@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+const SPEED = 500#300.0
 const JUMP_VELOCITY = -400.0
 const LIMIT_Y = 300 # Modificar el limite de Y
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -14,7 +14,6 @@ var zoom = false
 @onready var animationPlayer = $AnimationPlayer
 @onready var camera = $Camera2D
 @onready var CameraAnimated = $AnimationCamera
-
 
 
 func _ready():
@@ -34,9 +33,11 @@ func movePlayer():
 		IdleSprite.visible = false
 		WalkSprite.visible =true
 		if(direction_x == 1):
+			#camera.limit_left = camera.limit_left + 8.1 # 8.1 esta masso bien segun testing, consultar si se usa
 			animationPlayer.play("Right") 
 			currentDirection="IdleRight"
 		else:
+			
 			animationPlayer.play("Left") 
 			currentDirection="IdleLeft"
 		velocity.x = direction_x * SPEED 
@@ -56,13 +57,21 @@ func movePlayer():
 	move_and_slide()
 	if(position.y <= LIMIT_Y):
 		position.y = LIMIT_Y
+	if(position.y >= 600):
+		position.y = 600
+	if(position.x <= camera.limit_left-84):
+		position.x = camera.limit_left-84
+		
+	
 		
 	if Input.is_action_just_pressed("ui_accept"):
-		#ZoomMoveCamera(0.007)# Rango entre [0-0.1]
-		AgitarCamera()
+		#CameraAnimated.play("zoom")
+		ZoomCamera(0.007)# Rango entre [0-0.1]
+		#AgitarCamera()
 		pass	
 
 func AgitarCamera():
+	
 	CameraAnimated.play("agitar")
 	pass
 	
@@ -79,5 +88,8 @@ func ZoomCamera(levelZoom):
 		await get_tree().create_timer(0.01).timeout
 		camera.zoom = Vector2(position-value,position-value)
 		position -= value
-		
+
+func changeLimitCamera():
+	print("xddd")
+	camera.limit_left = camera.limit_left + 8.1 # 8.1 esta masso bien segun testing, consultar si se usa	
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://3jshgahd05ss"]
+[gd_scene load_steps=19 format=3 uid="uid://3jshgahd05ss"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_6ijwa"]
 [ext_resource type="Texture2D" uid="uid://k14tpapuwu82" path="res://Assets/Player/run.png" id="2_oj8ud"]
@@ -197,6 +197,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_66igc"]
 resource_name = "zoom"
@@ -215,10 +227,28 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(10, 0), Vector2(10, 10), Vector2(0, 10)]
 }
 
+[sub_resource type="Animation" id="Animation_pc3l7"]
+resource_name = "zoom"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.02, 1.02), Vector2(1.04, 1.04), Vector2(1.05, 1.05)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nm4iw"]
 _data = {
 "RESET": SubResource("Animation_pqoat"),
-"agitar": SubResource("Animation_66igc")
+"agitar": SubResource("Animation_66igc"),
+"zoom": SubResource("Animation_pc3l7")
 }
 
 [node name="Player" type="CharacterBody2D"]
