@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqvrgx7tguddc"]
+[gd_scene load_steps=11 format=3 uid="uid://cqvrgx7tguddc"]
 
+[ext_resource type="Script" path="res://Scripts/boss.gd" id="1_02l37"]
 [ext_resource type="Texture2D" uid="uid://dbu7v2mm2plk" path="res://Assets/Boss/Crystal Knight.png" id="1_bjapl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nvwjm"]
@@ -90,6 +91,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_uord6"]
 resource_name = "Tp Regreso"
 length = 0.7
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -115,6 +117,7 @@ _data = {
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(-3, -1)
+script = ExtResource("1_02l37")
 
 [node name="IdleSprite" type="Sprite2D" parent="."]
 position = Vector2(0, -2)
