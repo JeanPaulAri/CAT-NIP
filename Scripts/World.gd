@@ -42,9 +42,10 @@ func simularBackground():
 	elif(currentBackground == 1):
 		b2.position.x = b1.position.x+WIDTH
 	if(EstaDentro):
-		collisionShape.position.x += 8.1
-		cameraPlayer.limit_left = cameraPlayer.limit_left + 8.1 # 8.1 esta masso bien segun testing, consultar si se usa	
-		
+		collisionShape.position.x = cameraPlayer.position.x + WIDTH/2
+		#cameraPlayer.limit_left += 20
+		#print(str(cameraPlayer.position.x) + " -> " + str(cameraPlayer.position.x + WIDTH/2))
+	print(str(cameraPlayer.position.x))
 		
 func _on_area_2d_body_entered(body):
 	if(body.get_name() == "Player"):

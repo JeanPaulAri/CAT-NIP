@@ -124,8 +124,8 @@ func movePlayer(SPEED):
 		position.y = LIMIT_Y
 	if(position.y >= 600):
 		position.y = 600
-	if(position.x <= camera.limit_left-34):
-		position.x = camera.limit_left-34
+	if(position.x <= camera.limit_left-50):
+		position.x = camera.limit_left-50
 	if Input.is_action_just_pressed("ui_accept"):
 		#CameraAnimated.play("zoom")
 		ZoomCamera(0.007)# Rango entre [0-0.1]
@@ -156,7 +156,3 @@ func ZoomCamera(levelZoom):
 		await get_tree().create_timer(0.01).timeout
 		camera.zoom = Vector2(position-value,position-value)
 		position -= value
-
-func changeLimitCamera():
-	print("xddd")
-	camera.limit_left = camera.limit_left + 10 # 8.1 esta masso bien segun testing, consultar si se usa		
