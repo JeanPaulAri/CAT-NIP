@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://mflf0kx7n1x1"]
+[gd_scene load_steps=9 format=3 uid="uid://mflf0kx7n1x1"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_d8oht"]
 [ext_resource type="Texture2D" uid="uid://ewbu1qcafjt1" path="res://Assets/Map/Tileset.png" id="1_jtlsj"]
-[ext_resource type="PackedScene" uid="uid://3jshgahd05ss" path="res://Scenes/player.tscn" id="2_3h5tc"]
-[ext_resource type="PackedScene" uid="uid://b6ttc3mwscqi8" path="res://Scenes/background.tscn" id="2_sc58y"]
+[ext_resource type="PackedScene" uid="uid://dmme5lj1ruujk" path="res://Scenes/UI/menu_paused.tscn" id="2_0qv60"]
+[ext_resource type="PackedScene" uid="uid://d4aye30taop7c" path="res://Scenes/background.tscn" id="2_sc58y"]
+[ext_resource type="PackedScene" uid="uid://bjx8mhjt3vfes" path="res://Scenes/playerJusto.tscn" id="4_tagpg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_erkjh"]
 texture = ExtResource("1_jtlsj")
@@ -341,16 +342,20 @@ tile_set = SubResource("TileSet_lx6kb")
 format = 2
 layer_0/tile_data = PackedInt32Array(2883631, 524288, 9)
 
-[node name="Player" parent="TileMap" instance=ExtResource("2_3h5tc")]
-show_behind_parent = true
-position = Vector2(322, 464)
-scale = Vector2(5, 5)
+[node name="Player2" parent="TileMap" instance=ExtResource("4_tagpg")]
+scale = Vector2(6.51428, 5.45104)
 
 [node name="Area2D" type="Area2D" parent="TileMap"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Area2D"]
 position = Vector2(952, 472)
 shape = SubResource("RectangleShape2D_cqrbt")
+
+[node name="MenuPaused" parent="." instance=ExtResource("2_0qv60")]
+offset_left = 489.0
+offset_top = 335.0
+offset_right = 489.0
+offset_bottom = 335.0
 
 [connection signal="body_entered" from="TileMap/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="TileMap/Area2D" to="." method="_on_area_2d_body_exited"]

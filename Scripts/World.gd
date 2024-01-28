@@ -4,12 +4,13 @@ const WIDTH = 1280
 const HEIGHT = 720
 
 #@onready pl = $Player
-@onready var player = $TileMap/Player
+@onready var player = $TileMap/Player2
 @onready var b1 = $Background/B1
 @onready var b2 = $Background/B2 
 @onready var b3 = $Background/B3
-@onready var cameraPlayer = $TileMap/Player/Camera2D
+@onready var cameraPlayer = $TileMap/Player2/Camera2D
 @onready var collisionShape = $TileMap/Area2D/CollisionShape2D
+@onready var menuPausa = $Menu
 var currentBackground = 2
 var EstaDentro = false
 func _ready():
@@ -36,26 +37,20 @@ func simularBackground():
 		
 	if(currentBackground == 3):
 		b1.position.x = b3.position.x+WIDTH
-		
-		
 	elif(currentBackground == 2):
 		b3.position.x = b2.position.x+WIDTH
-		
 	elif(currentBackground == 1):
 		b2.position.x = b1.position.x+WIDTH
-		
 	if(EstaDentro):
 		collisionShape.position.x += 8.1
 		cameraPlayer.limit_left = cameraPlayer.limit_left + 8.1 # 8.1 esta masso bien segun testing, consultar si se usa	
 		
-	
-	
-
+		
 func _on_area_2d_body_entered(body):
-	if(body.get_name() == "Player"):
+	if(body.get_name() == "Player2"):
 		EstaDentro = true
 
 func _on_area_2d_body_exited(body):
-	if(body.get_name() == "Player"):
+	if(body.get_name() == "Player2"):
 		EstaDentro = false
 	# Replace with function body.
