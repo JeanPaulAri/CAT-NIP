@@ -8,15 +8,32 @@ var enemy_Direction="Null"
 var damageEnemy=50
 var HealthPoints=100
 var isAlive:bool=true
+var isHit:bool=false
 var A_Cooldown=true
+var hitstun=10
+var hitMultiplier=20
 
 @onready var moveSprites = $Movement
 @onready var animationPlayer = $AnimationPlayer
 @onready var attackSprites = $Attack
 @onready var DeadSprite = $Muerto
 
-var spriteSize=100
+var hitColor=true
+
+var spriteSize=120
 func _physics_process(delta):
+	if isHit:
+		if enemy_Direction=="Right":
+			position.x -= hitMultiplier
+		else:
+			position.x += hitMultiplier
+		hitstun-=1
+		moveSprites.modulate=Color(10,10,10,10)
+		attackSprites.modulate=Color(10,10,10,10)
+		if hitstun<=0:
+			moveSprites.modulate=Color(1,1,1,1)
+			attackSprites.modulate=Color(1,1,1,1)
+			isHit=false
 	if isAlive:
 		DeadSprite.visible=false
 		if player_chase and not enemy_attack and A_Cooldown:
@@ -43,7 +60,6 @@ func _physics_process(delta):
 			enemy_attack=false
 			A_Cooldown=false
 			$AttackCooldown.start()
-			
 		else:
 			attackSprites.visible=false
 			moveSprites.visible=true
@@ -59,7 +75,7 @@ func _on_attack_cooldown_timeout():
 func take_damage(damage):
 	HealthPoints-=damage
 	print("HP enemigo: "+str(HealthPoints))
-	
+	isHit=true
 	if HealthPoints<=0:
 		isAlive=false
 		die()
