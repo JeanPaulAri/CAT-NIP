@@ -4,11 +4,11 @@ const WIDTH = 1280
 const HEIGHT = 720
 
 #@onready pl = $Player
-@onready var player = $TileMap/Player2
+@onready var player = $TileMap/Player
 @onready var b1 = $Background/B1
 @onready var b2 = $Background/B2 
 @onready var b3 = $Background/B3
-@onready var cameraPlayer = $TileMap/Player2/Camera2D
+@onready var cameraPlayer = $TileMap/Player/Camera2D
 @onready var collisionShape = $TileMap/Area2D/CollisionShape2D
 @onready var menuPausa = $MenuPaused
 var currentBackground = 2
@@ -47,10 +47,10 @@ func simularBackground():
 		
 		
 func _on_area_2d_body_entered(body):
-	if(body.get_name() == "Player2"):
+	if(body.get_name() == "Player"):
 		EstaDentro = true
 
 func _on_area_2d_body_exited(body):
-	if(body.get_name() == "Player2"):
+	if(body.get_name() == "Player"):
 		EstaDentro = false
 	# Replace with function body.
