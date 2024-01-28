@@ -2,7 +2,7 @@ extends Node2D
 class_name State_Boss
 
 @onready var debug= owner.find_child("debug")
-@onready var player = owner.get_parent().find_child("Test_player")
+@onready var player = owner.get_parent().find_child("Player")
 @onready var animation_player = owner.find_child("AnimationPlayer")
 
 func _ready():

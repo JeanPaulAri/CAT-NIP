@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://cckah2l603g1u"]
 
-[ext_resource type="Texture2D" uid="uid://de6ug4m6t78mj" path="res://Assets/Boss/Crystal Knight.png" id="1_flsgt"]
 [ext_resource type="Script" path="res://Scripts/boss.gd" id="1_py4en"]
+[ext_resource type="Texture2D" uid="uid://bahf8yu2l6ydv" path="res://Assets/Boss/Crystal Knigth.png" id="2_i6twb"]
 [ext_resource type="Texture2D" uid="uid://bpukigok1ovgn" path="res://Assets/Mecha-stone Golem 0.1/weapon PNG/Laser_sheet.png" id="2_wy6u4"]
 [ext_resource type="Script" path="res://Scripts/Turing M.gd" id="3_0edd5"]
 [ext_resource type="Script" path="res://Scripts/idle.gd" id="4_5fhbh"]
@@ -75,6 +75,38 @@ tracks/1/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_4x1s4"]
+resource_name = "Beam"
+length = 1.87501
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Pivot/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.125, 1.25, 1.375, 1.5, 1.625, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Turing M/Beam")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.875),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_target"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_blsve"]
 resource_name = "Dead"
 length = 1.00001
@@ -138,67 +170,6 @@ tracks/1/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_0esvv"]
-resource_name = "Teleport"
-length = 0.625013
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [15, 16, 17, 18, 19]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Pivot/Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_4x1s4"]
-resource_name = "Beam"
-length = 1.87501
-loop_mode = 1
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Pivot/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.125, 1.25, 1.375, 1.5, 1.625, 1.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 0]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Turing M/Beam")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.875),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"set_target"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_7csu1"]
 length = 0.001
 tracks/0/type = "value"
@@ -236,6 +207,35 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0esvv"]
+resource_name = "Teleport"
+length = 0.625013
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 16, 17, 18, 19]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Pivot/Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_fdl5h"]
@@ -279,7 +279,7 @@ script = ExtResource("1_py4en")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-3.5, 2)
 scale = Vector2(2, 2)
-texture = ExtResource("1_flsgt")
+texture = ExtResource("2_i6twb")
 hframes = 5
 vframes = 5
 

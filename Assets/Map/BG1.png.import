@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqx2fq6s25tqf"
-path="res://.godot/imported/ratBossSheet.png-a0a2c0022280e6c110b94b7b1deb4347.ctex"
+uid="uid://5hjvxq7i2yb6"
+path="res://.godot/imported/BG1.png-26eb881ab72b80fb0857cfd71d233daa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Boss/ratBossSheet.png"
-dest_files=["res://.godot/imported/ratBossSheet.png-a0a2c0022280e6c110b94b7b1deb4347.ctex"]
+source_file="res://Assets/Map/BG1.png"
+dest_files=["res://.godot/imported/BG1.png-26eb881ab72b80fb0857cfd71d233daa.ctex"]
 
 [params]
 

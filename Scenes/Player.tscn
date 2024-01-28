@@ -1,7 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://ihd6hugk3ba8"]
+[gd_scene load_steps=29 format=3 uid="uid://dd3nm45u2oioq"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_8jisa"]
-[ext_resource type="PackedScene" uid="uid://cfrhe4fqy3rbp" path="res://Scenes/dash.tscn" id="2_fb4lv"]
+[ext_resource type="PackedScene" uid="uid://bhqbxwg7lxtdr" path="res://Scenes/dash.tscn" id="2_fb4lv"]
 [ext_resource type="Texture2D" uid="uid://k14tpapuwu82" path="res://Assets/Player/run.png" id="2_oj8ud"]
 [ext_resource type="Texture2D" uid="uid://cla3iy5wupngg" path="res://Assets/Player/idle.png" id="3_5pefk"]
 [ext_resource type="Texture2D" uid="uid://dlo50ux1hc8n2" path="res://Assets/Player/attack and die.png" id="4_rdvkt"]
@@ -462,7 +462,6 @@ shape = SubResource("RectangleShape2D_6pqd0")
 disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(26.4, 11.8)
 rotation = 1.05069
 scale = Vector2(-331.085, 312.074)
 limit_left = 0
@@ -485,7 +484,6 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ColisionBackground"]
 position = Vector2(0.15, 1.9)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_n2j0g")
 
 [connection signal="body_entered" from="AreaDerecha" to="." method="_on_area_derecha_body_entered"]
