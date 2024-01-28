@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k14tpapuwu82"
-path="res://.godot/imported/run.png-da9b4995b43489fefe30ded49be38dc3.ctex"
+uid="uid://dbu7v2mm2plk"
+path="res://.godot/imported/Crystal Knight.png-876b4d1cef7c9db5e5a7aa07ec245413.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/run.png"
-dest_files=["res://.godot/imported/run.png-da9b4995b43489fefe30ded49be38dc3.ctex"]
+source_file="res://Assets/Boss/Crystal Knight.png"
+dest_files=["res://.godot/imported/Crystal Knight.png-876b4d1cef7c9db5e5a7aa07ec245413.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
