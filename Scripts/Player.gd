@@ -10,47 +10,102 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # 0 Left, 1 Right, 2 Up, 3 Down /////// Idle -> 0I
 
+var dashSpeed=1000
+var dashCooldown=.99
+var normalSpeed=300
+var dashLength=.25
 var currentDirection = "IdleDown"
+var zoom = false
 var isAttacking=false
+var isAlive=true
+var isHit=false
+#Mientras mayor sea hitStunValue mayor tiempo de STUN
+var hitstunValue=20
+var hitstun=hitstunValue
+var playerHP=100
+var damagePlayer=50
+
+@onready var dash=$"../Dash"
 
 @onready var WalkSprite = $WalkSprites
 @onready var IdleSprite = $IdleSprites
 @onready var animationPlayer = $AnimationPlayer
 @onready var AttackSprite = $"Attack(temporal)"
+@onready var DeadSprite = $Muerto
+@onready var Colision=$CollisionShape2D
+@onready var camera = $Camera2D
+@onready var CameraAnimated = $AnimationCamera
 
 func _ready():
 		animationPlayer.play(currentDirection) 
 		print("Player Cargado con Exito")
-		 
 func _physics_process(delta):
+	if isHit:
+		Colision.disabled=true
+		hitstun-=1
+		WalkSprite.modulate=Color(10,10,10,10)
+		IdleSprite.modulate=Color(10,10,10,10)
+		AttackSprite.modulate=Color(10,10,10,10)
+		DeadSprite.modulate=Color(10,10,10,10)
+		if hitstun<=0:
+			WalkSprite.modulate=Color(1,1,1,1)
+			IdleSprite.modulate=Color(1,1,1,1)
+			AttackSprite.modulate=Color(1,1,1,1)
+			DeadSprite.modulate=Color(1,1,1,1)
+			isHit=false
+			hitstun=hitstunValue
+	if isAlive:
+		if Input.is_action_just_pressed("Dash") and !dash.is_cooldown():
+			dash.start_dash(dashLength)
+			dash.cool_down(dashCooldown)
+		var SPEED=dashSpeed 
+		if dash.is_dashing():
+			Colision.disabled=true
+		else:
+			SPEED=normalSpeed
+			Colision.disabled=false
+		if(isAttacking!=true):
+			movePlayer(SPEED)
+		attack()
+	else:
+		WalkSprite.visible=false
+		IdleSprite.visible=false
+		AttackSprite.visible=false
+		DeadSprite.visible=true
 
-	if not is_on_floor():
-		velocity.y += gravity * delta
+func take_damage(damage):
+	print("Player HP: "+str(playerHP))
+	playerHP-=damage
+	isHit=true
+	AgitarCamera()
+	if playerHP<=0:
+		isAlive=false
+		die()
 
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	if(isAttacking!=true):
-		movePlayer()
-	attack()
+func die():
+	AttackSprite.visible=true
+	IdleSprite.visible = false
+	WalkSprite.visible = false
+	DeadSprite.visible=false
+	if(currentDirection == "IdleRight"):
+		animationPlayer.play("DieRight")
+	else:
+		animationPlayer.play("DieLeft")
 
 func attack():
-	var direction_x = Input.get_axis("ui_left", "ui_right")
 	if Input.is_action_pressed("ataque"):
 		AttackSprite.visible=true
 		IdleSprite.visible = false
 		WalkSprite.visible = false
+		DeadSprite.visible=false
 		if(currentDirection == "IdleRight"):
 			animationPlayer.play("AttackRight")
 			isAttacking=true
-			$ColisionAtaque/ColisionDerecha.disabled=false
 			await animationPlayer.animation_finished
-			$ColisionAtaque/ColisionDerecha.disabled=true
 		elif(currentDirection == "IdleLeft"):
 			animationPlayer.play("AttackLeft")
 			isAttacking=true
-			$ColisionAtaque/ColisionIzquierda.disabled=false
 			await animationPlayer.animation_finished
-			$ColisionAtaque/ColisionDerecha.disabled=true
 	else:
 		AttackSprite.visible=false
 		isAttacking=false
@@ -60,15 +115,10 @@ func idleToWaleSprite():
 	WalkSprite.visible = IdleSprite.visible
 	IdleSprite.visible = not IdleSprite.visible
 
-func _on_area_2d_body_entered(body):
-	if body.is_in_group("HIT"):
-		body.takeDamage()
-	else:
-		pass
-
-func movePlayer():
+func movePlayer(SPEED):
 	var direction_x = Input.get_axis("ui_left", "ui_right")
 	var direction_y = Input.get_axis("ui_up", "ui_down")
+	DeadSprite.visible =false
 	if direction_x:
 		IdleSprite.visible = false
 		WalkSprite.visible =true
@@ -81,7 +131,6 @@ func movePlayer():
 		velocity.x = direction_x * SPEED 
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-	#print(position.y)
 	if direction_y:
 		WalkSprite.visible =true
 		IdleSprite.visible = false
@@ -95,7 +144,37 @@ func movePlayer():
 	move_and_slide()
 	if(position.y <= LIMIT_Y):
 		position.y = LIMIT_Y
+	if(position.y >= 600):
+		position.y = 600
+	if(position.x <= camera.limit_left-50):
+		position.x = camera.limit_left-50
+	if Input.is_action_just_pressed("ui_accept"):
+		#CameraAnimated.play("zoom")
+		ZoomCamera(0.007)# Rango entre [0-0.1]
+		#AgitarCamera()
+		pass	
+	
+func _on_area_derecha_body_entered(body):
+	body.take_damage(damagePlayer)
 
+func _on_area_izquierda_body_entered(body):
+	body.take_damage(damagePlayer)
 
-func MoveCamera():
+func AgitarCamera():
+	
+	CameraAnimated.play("agitar")
 	pass
+	
+func ZoomCamera(levelZoom):
+	
+	var position = 1
+	var value = levelZoom
+		
+	for i in range(30):
+		await get_tree().create_timer(0.01).timeout
+		camera.zoom = Vector2(position+value,position+value)
+		position += value
+	for i in range(30):
+		await get_tree().create_timer(0.01).timeout
+		camera.zoom = Vector2(position-value,position-value)
+		position -= value

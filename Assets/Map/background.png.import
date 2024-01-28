@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k14tpapuwu82"
-path="res://.godot/imported/run.png-da9b4995b43489fefe30ded49be38dc3.ctex"
+uid="uid://do3oxmlae0i8q"
+path="res://.godot/imported/background.png-5554fe653b8d276685913d84668c8323.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/run.png"
-dest_files=["res://.godot/imported/run.png-da9b4995b43489fefe30ded49be38dc3.ctex"]
+source_file="res://Assets/Map/background.png"
+dest_files=["res://.godot/imported/background.png-5554fe653b8d276685913d84668c8323.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
