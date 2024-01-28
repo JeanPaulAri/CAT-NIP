@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://dd3nm45u2oioq"]
+[gd_scene load_steps=28 format=3 uid="uid://dd3nm45u2oioq"]
 
-[ext_resource type="Script" path="res://Scripts/Gato_Player.gd" id="1_6145s"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_8jisa"]
+[ext_resource type="PackedScene" uid="uid://bhqbxwg7lxtdr" path="res://Scenes/dash.tscn" id="2_fb4lv"]
 [ext_resource type="Texture2D" uid="uid://k14tpapuwu82" path="res://Assets/Player/run.png" id="2_oj8ud"]
 [ext_resource type="Texture2D" uid="uid://cla3iy5wupngg" path="res://Assets/Player/idle.png" id="3_5pefk"]
 [ext_resource type="Texture2D" uid="uid://dlo50ux1hc8n2" path="res://Assets/Player/attack and die.png" id="4_rdvkt"]
@@ -332,11 +333,81 @@ size = Vector2(9.4625, 8.1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6pqd0"]
 size = Vector2(8.3, 7.9)
 
-[node name="Gato_Player" type="CharacterBody2D"]
+[sub_resource type="Animation" id="Animation_pqoat"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_66igc"]
+resource_name = "zoom"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(10, 0), Vector2(10, 10), Vector2(0, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_pc3l7"]
+resource_name = "zoom"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.02, 1.02), Vector2(1.04, 1.04), Vector2(1.05, 1.05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nm4iw"]
+_data = {
+"RESET": SubResource("Animation_pqoat"),
+"agitar": SubResource("Animation_66igc"),
+"zoom": SubResource("Animation_pc3l7")
+}
+
+[node name="Player" type="CharacterBody2D"]
 position = Vector2(107, 38)
 scale = Vector2(10, 10)
 collision_layer = 3
-script = ExtResource("1_6145s")
+script = ExtResource("1_8jisa")
+
+[node name="Dash" parent="." instance=ExtResource("2_fb4lv")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.900001, 0.700001)
@@ -387,6 +458,24 @@ disabled = true
 position = Vector2(-9.7, 5.4)
 shape = SubResource("RectangleShape2D_6pqd0")
 disabled = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(26.4, 11.8)
+rotation = 1.05069
+scale = Vector2(-331.085, 312.074)
+limit_left = 0
+limit_top = 0
+limit_bottom = 720
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 3.0
+
+[node name="AnimationCamera" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nm4iw")
+}
 
 [connection signal="body_entered" from="AreaDerecha" to="." method="_on_area_derecha_body_entered"]
 [connection signal="body_entered" from="AreaIzquierda" to="." method="_on_area_izquierda_body_entered"]

@@ -28,6 +28,8 @@ var damagePlayer=50
 @onready var AttackSprite = $"Attack(temporal)"
 @onready var DeadSprite = $Muerto
 @onready var Colision=$CollisionShape2D
+@onready var camera = $Camera2D
+@onready var CameraAnimated = $AnimationCamera
 
 func _ready():
 		animationPlayer.play(currentDirection) 
@@ -122,14 +124,39 @@ func movePlayer(SPEED):
 		position.y = LIMIT_Y
 	if(position.y >= 600):
 		position.y = 600
-		
-
-func MoveCamera():
-	pass
-
+	if(position.x <= camera.limit_left-34):
+		position.x = camera.limit_left-34
+	if Input.is_action_just_pressed("ui_accept"):
+		#CameraAnimated.play("zoom")
+		ZoomCamera(0.007)# Rango entre [0-0.1]
+		#AgitarCamera()
+		pass	
+	
 func _on_area_derecha_body_entered(body):
 	body.take_damage(damagePlayer)
 
 func _on_area_izquierda_body_entered(body):
 	body.take_damage(damagePlayer)
 
+func AgitarCamera():
+	
+	CameraAnimated.play("agitar")
+	pass
+	
+func ZoomCamera(levelZoom):
+	
+	var position = 1
+	var value = levelZoom
+		
+	for i in range(30):
+		await get_tree().create_timer(0.01).timeout
+		camera.zoom = Vector2(position+value,position+value)
+		position += value
+	for i in range(30):
+		await get_tree().create_timer(0.01).timeout
+		camera.zoom = Vector2(position-value,position-value)
+		position -= value
+
+func changeLimitCamera():
+	print("xddd")
+	camera.limit_left = camera.limit_left + 10 # 8.1 esta masso bien segun testing, consultar si se usa		

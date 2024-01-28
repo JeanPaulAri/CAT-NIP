@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3nuyka3sa2rc"]
+[gd_scene load_steps=11 format=3 uid="uid://b3nuyka3sa2rc"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_d8oht"]
 [ext_resource type="Texture2D" uid="uid://ewbu1qcafjt1" path="res://Assets/Map/Tileset.png" id="1_jtlsj"]
 [ext_resource type="PackedScene" uid="uid://dmme5lj1ruujk" path="res://Scenes/UI/menu_paused.tscn" id="2_0qv60"]
 [ext_resource type="PackedScene" uid="uid://d4aye30taop7c" path="res://Scenes/background.tscn" id="2_sc58y"]
-[ext_resource type="PackedScene" uid="uid://ru7ll40ihhdm" path="res://Scenes/playerJusto.tscn" id="4_tagpg"]
+[ext_resource type="PackedScene" uid="uid://dd3nm45u2oioq" path="res://Scenes/Player.tscn" id="4_7wj8a"]
+[ext_resource type="PackedScene" uid="uid://cmsuk6a2w8ein" path="res://Scenes/enemigo_rata.tscn" id="5_pu4j1"]
+[ext_resource type="PackedScene" uid="uid://bhqbxwg7lxtdr" path="res://Scenes/dash.tscn" id="7_iyag3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_erkjh"]
 texture = ExtResource("1_jtlsj")
@@ -342,14 +344,20 @@ tile_set = SubResource("TileSet_lx6kb")
 format = 2
 layer_0/tile_data = PackedInt32Array(2883631, 524288, 9)
 
-[node name="Player2" parent="TileMap" instance=ExtResource("4_tagpg")]
-scale = Vector2(6.51428, 5.45104)
+[node name="Player" parent="TileMap" groups=["Player"] instance=ExtResource("4_7wj8a")]
+position = Vector2(240, 460)
 
 [node name="Area2D" type="Area2D" parent="TileMap"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Area2D"]
 position = Vector2(952, 472)
 shape = SubResource("RectangleShape2D_cqrbt")
+
+[node name="Enemigo_Rata" parent="TileMap" groups=["enemy"] instance=ExtResource("5_pu4j1")]
+position = Vector2(1471, 456)
+scale = Vector2(1.4, 1.4)
+
+[node name="Dash" parent="TileMap" instance=ExtResource("7_iyag3")]
 
 [node name="MenuPaused" parent="." instance=ExtResource("2_0qv60")]
 offset_left = 489.0
