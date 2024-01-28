@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ewbu1qcafjt1"
-path="res://.godot/imported/Tileset.png-78e57efc87e7ed97c3f4ad13a1cc22f1.ctex"
+uid="uid://bpukigok1ovgn"
+path="res://.godot/imported/Laser_sheet.png-c67129fe0380291c6dd5910982edf0c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Map/Tileset.png"
-dest_files=["res://.godot/imported/Tileset.png-78e57efc87e7ed97c3f4ad13a1cc22f1.ctex"]
+source_file="res://Assets/Mecha-stone Golem 0.1/weapon PNG/Laser_sheet.png"
+dest_files=["res://.godot/imported/Laser_sheet.png-c67129fe0380291c6dd5910982edf0c9.ctex"]
 
 [params]
 
