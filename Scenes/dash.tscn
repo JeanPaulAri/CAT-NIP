@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhqbxwg7lxtdr"]
+[gd_scene load_steps=2 format=3 uid="uid://cfrhe4fqy3rbp"]
 
 [ext_resource type="Script" path="res://Scripts/Dash.gd" id="1_a3hsl"]
 
@@ -6,4 +6,7 @@
 script = ExtResource("1_a3hsl")
 
 [node name="Dashtimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Cooldown" type="Timer" parent="."]
 one_shot = true

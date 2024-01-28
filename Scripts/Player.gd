@@ -11,6 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 # 0 Left, 1 Right, 2 Up, 3 Down /////// Idle -> 0I
 
 var dashSpeed=1000
+var dashCooldown=.99
 var normalSpeed=300
 var dashLength=.25
 var currentDirection = "IdleDown"
@@ -36,8 +37,9 @@ func _ready():
 		print("Player Cargado con Exito")
 func _physics_process(delta):
 	if isAlive:
-		if Input.is_action_just_pressed("Dash"):
+		if Input.is_action_just_pressed("Dash") and !dash.is_cooldown():
 			dash.start_dash(dashLength)
+			dash.cool_down(dashCooldown)
 		var SPEED=dashSpeed 
 		if dash.is_dashing():
 			Colision.disabled=true
