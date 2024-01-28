@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de6ug4m6t78mj"
-path="res://.godot/imported/Crystal Knight.png-876b4d1cef7c9db5e5a7aa07ec245413.ctex"
+uid="uid://dnjaap5qd3fli"
+path="res://.godot/imported/arm_projectile_glowing.png-621e31b4409478cfb2752722c20e1692.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Boss/Crystal Knight.png"
-dest_files=["res://.godot/imported/Crystal Knight.png-876b4d1cef7c9db5e5a7aa07ec245413.ctex"]
+source_file="res://Assets/Mecha-stone Golem 0.1/weapon PNG/arm_projectile_glowing.png"
+dest_files=["res://.godot/imported/arm_projectile_glowing.png-621e31b4409478cfb2752722c20e1692.ctex"]
 
 [params]
 

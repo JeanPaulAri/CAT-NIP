@@ -421,7 +421,8 @@ libraries = {
 }
 
 [node name="WalkSprites" type="Sprite2D" parent="."]
-position = Vector2(0.6, -3.8)
+position = Vector2(0.599999, -3.8)
+scale = Vector2(1, 1)
 texture = ExtResource("2_oj8ud")
 hframes = 24
 frame = 12
@@ -440,7 +441,8 @@ vframes = 4
 frame = 10
 
 [node name="Muerto" type="Sprite2D" parent="."]
-position = Vector2(2.2, -0.8)
+position = Vector2(2.2, -0.800001)
+scale = Vector2(1, 1)
 texture = ExtResource("4_rdvkt")
 hframes = 5
 vframes = 4
@@ -448,6 +450,7 @@ frame = 8
 
 [node name="AreaDerecha" type="Area2D" parent="."]
 position = Vector2(0, 3.4)
+scale = Vector2(1, 1)
 
 [node name="ColisionDerecha" type="CollisionShape2D" parent="AreaDerecha"]
 position = Vector2(10.4, 2.4)
@@ -462,7 +465,6 @@ shape = SubResource("RectangleShape2D_6pqd0")
 disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(26.4, 11.8)
 rotation = 1.05069
 scale = Vector2(-331.085, 312.074)
 limit_left = 0
