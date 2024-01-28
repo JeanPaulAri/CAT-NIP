@@ -1,13 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://b7i5xaf650g86"]
+[gd_scene load_steps=12 format=3 uid="uid://d1s8aspdn8cod"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_kypyc"]
-[ext_resource type="PackedScene" uid="uid://d4aye30taop7c" path="res://Scenes/background.tscn" id="2_gft8e"]
+[ext_resource type="PackedScene" uid="uid://b6ttc3mwscqi8" path="res://Scenes/background.tscn" id="2_gft8e"]
 [ext_resource type="Texture2D" uid="uid://ewbu1qcafjt1" path="res://Assets/Map/Tileset.png" id="3_7eprf"]
-[ext_resource type="PackedScene" uid="uid://dd3nm45u2oioq" path="res://Scenes/Player.tscn" id="4_d3ew8"]
-[ext_resource type="PackedScene" uid="uid://cmsuk6a2w8ein" path="res://Scenes/enemigo_rata.tscn" id="5_ifkne"]
-[ext_resource type="PackedScene" uid="uid://bhqbxwg7lxtdr" path="res://Scenes/dash.tscn" id="6_jovni"]
+[ext_resource type="PackedScene" uid="uid://ihd6hugk3ba8" path="res://Scenes/Player.tscn" id="4_d3ew8"]
+[ext_resource type="PackedScene" uid="uid://cggruslmpqlyb" path="res://Scenes/enemigo_rata.tscn" id="5_ifkne"]
+[ext_resource type="PackedScene" uid="uid://cfrhe4fqy3rbp" path="res://Scenes/dash.tscn" id="6_jovni"]
 [ext_resource type="PackedScene" uid="uid://dmme5lj1ruujk" path="res://Scenes/UI/menu_paused.tscn" id="7_h7ce7"]
-[ext_resource type="PackedScene" uid="uid://cckah2l603g1u" path="res://Scenes/boss.tscn" id="8_87ube"]
+[ext_resource type="PackedScene" uid="uid://dw234wy7bm6a1" path="res://Scenes/boss.tscn" id="8_87ube"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_erkjh"]
 texture = ExtResource("3_7eprf")
