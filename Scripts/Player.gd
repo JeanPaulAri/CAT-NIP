@@ -18,6 +18,10 @@ var currentDirection = "IdleDown"
 var zoom = false
 var isAttacking=false
 var isAlive=true
+var isHit=false
+#Mientras mayor sea hitStunValue mayor tiempo de STUN
+var hitstunValue=20
+var hitstun=hitstunValue
 var playerHP=100
 var damagePlayer=50
 
@@ -36,6 +40,20 @@ func _ready():
 		animationPlayer.play(currentDirection) 
 		print("Player Cargado con Exito")
 func _physics_process(delta):
+	if isHit:
+		Colision.disabled=true
+		hitstun-=1
+		WalkSprite.modulate=Color(10,10,10,10)
+		IdleSprite.modulate=Color(10,10,10,10)
+		AttackSprite.modulate=Color(10,10,10,10)
+		DeadSprite.modulate=Color(10,10,10,10)
+		if hitstun<=0:
+			WalkSprite.modulate=Color(1,1,1,1)
+			IdleSprite.modulate=Color(1,1,1,1)
+			AttackSprite.modulate=Color(1,1,1,1)
+			DeadSprite.modulate=Color(1,1,1,1)
+			isHit=false
+			hitstun=hitstunValue
 	if isAlive:
 		if Input.is_action_just_pressed("Dash") and !dash.is_cooldown():
 			dash.start_dash(dashLength)
@@ -58,6 +76,8 @@ func _physics_process(delta):
 func take_damage(damage):
 	print("Player HP: "+str(playerHP))
 	playerHP-=damage
+	isHit=true
+	AgitarCamera()
 	if playerHP<=0:
 		isAlive=false
 		die()

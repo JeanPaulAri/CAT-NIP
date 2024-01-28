@@ -6,7 +6,7 @@ var player=null
 var enemy_attack:bool = false
 var enemy_Direction="Null"
 var damageEnemy=50
-var HealthPoints=100
+var HealthPoints=201
 var isAlive:bool=true
 var isHit:bool=false
 var A_Cooldown=true
@@ -23,7 +23,7 @@ var hitColor=true
 var spriteSize=120
 func _physics_process(delta):
 	if isHit:
-		if enemy_Direction=="Right":
+		if player.currentDirection=="IdleLeft":
 			position.x -= hitMultiplier
 		else:
 			position.x += hitMultiplier
@@ -34,6 +34,7 @@ func _physics_process(delta):
 			moveSprites.modulate=Color(1,1,1,1)
 			attackSprites.modulate=Color(1,1,1,1)
 			isHit=false
+			hitstun=10
 	if isAlive:
 		DeadSprite.visible=false
 		if player_chase and not enemy_attack and A_Cooldown:
