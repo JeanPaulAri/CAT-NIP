@@ -37,7 +37,7 @@ var damagePlayer=50
 @onready var CameraAnimated = $AnimationCamera
 
 func _ready():
-		animationPlayer.play(currentDirection) 
+		animationPlayer.play("Right") 
 		print("Player Cargado con Exito")
 func _physics_process(delta):
 	if isHit:
@@ -100,10 +100,12 @@ func attack():
 		DeadSprite.visible=false
 		if(currentDirection == "IdleRight"):
 			animationPlayer.play("AttackRight")
+			AttackSprite.flip_h=false
 			isAttacking=true
 			await animationPlayer.animation_finished
 		elif(currentDirection == "IdleLeft"):
 			animationPlayer.play("AttackLeft")
+			AttackSprite.flip_h=true
 			isAttacking=true
 			await animationPlayer.animation_finished
 	else:
@@ -124,9 +126,13 @@ func movePlayer(SPEED):
 		WalkSprite.visible =true
 		if(direction_x == 1 and isAttacking==false):
 			animationPlayer.play("Right") 
+			WalkSprite.flip_h=false
+			IdleSprite.flip_h=false
 			currentDirection="IdleRight"
 		elif(direction_x==-1 and isAttacking==false):
 			animationPlayer.play("Left") 
+			WalkSprite.flip_h=true
+			IdleSprite.flip_h=true
 			currentDirection="IdleLeft"
 		velocity.x = direction_x * SPEED 
 	else:
