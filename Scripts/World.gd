@@ -10,7 +10,7 @@ const HEIGHT = 720
 @onready var b3 = $Background/B3
 @onready var cameraPlayer = $TileMap/Player2/Camera2D
 @onready var collisionShape = $TileMap/Area2D/CollisionShape2D
-@onready var menuPausa = $Menu
+@onready var menuPausa = $MenuPaused
 var currentBackground = 2
 var EstaDentro = false
 func _ready():

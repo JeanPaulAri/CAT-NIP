@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://n0s8kf1uaflv"]
+
+[ext_resource type="PackedScene" uid="uid://cmsuk6a2w8ein" path="res://Scenes/enemigo_rata.tscn" id="1_nxcpp"]
+[ext_resource type="PackedScene" uid="uid://dd3nm45u2oioq" path="res://Scenes/Gato_player.tscn" id="2_p7a22"]
+[ext_resource type="Script" path="res://Scripts/Dash.gd" id="3_ljtb4"]
+
+[node name="Prefabs_POSTRE" type="Node2D"]
+
+[node name="Enemigo_Rata" parent="." groups=["enemy"] instance=ExtResource("1_nxcpp")]
+position = Vector2(1033, 520)
+collision_layer = 3
+
+[node name="Gato_player" parent="." groups=["Player"] instance=ExtResource("2_p7a22")]
+position = Vector2(154, 520)
+scale = Vector2(7, 7)
+
+[node name="Dash" type="Node2D" parent="."]
+script = ExtResource("3_ljtb4")
+
+[node name="DashTimer" type="Timer" parent="Dash"]
+one_shot = true

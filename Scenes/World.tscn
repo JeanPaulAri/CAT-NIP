@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://mflf0kx7n1x1"]
+[gd_scene load_steps=9 format=3 uid="uid://b3nuyka3sa2rc"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_d8oht"]
 [ext_resource type="Texture2D" uid="uid://ewbu1qcafjt1" path="res://Assets/Map/Tileset.png" id="1_jtlsj"]
 [ext_resource type="PackedScene" uid="uid://dmme5lj1ruujk" path="res://Scenes/UI/menu_paused.tscn" id="2_0qv60"]
 [ext_resource type="PackedScene" uid="uid://d4aye30taop7c" path="res://Scenes/background.tscn" id="2_sc58y"]
-[ext_resource type="PackedScene" uid="uid://bjx8mhjt3vfes" path="res://Scenes/playerJusto.tscn" id="4_tagpg"]
+[ext_resource type="PackedScene" uid="uid://ru7ll40ihhdm" path="res://Scenes/playerJusto.tscn" id="4_tagpg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_erkjh"]
 texture = ExtResource("1_jtlsj")
