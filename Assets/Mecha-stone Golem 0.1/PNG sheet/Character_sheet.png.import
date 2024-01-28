@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de6ug4m6t78mj"
-path="res://.godot/imported/Crystal Knight.png-876b4d1cef7c9db5e5a7aa07ec245413.ctex"
+uid="uid://doh7ybh08wian"
+path="res://.godot/imported/Character_sheet.png-11902f53d53921d5a08fb0c4fe75f2da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Boss/Crystal Knight.png"
-dest_files=["res://.godot/imported/Crystal Knight.png-876b4d1cef7c9db5e5a7aa07ec245413.ctex"]
+source_file="res://Assets/Mecha-stone Golem 0.1/PNG sheet/Character_sheet.png"
+dest_files=["res://.godot/imported/Character_sheet.png-11902f53d53921d5a08fb0c4fe75f2da.ctex"]
 
 [params]
 
