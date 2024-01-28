@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Gato_Player.gd" id="1_6145s"]
 [ext_resource type="Texture2D" uid="uid://k14tpapuwu82" path="res://Assets/Player/run.png" id="2_oj8ud"]
 [ext_resource type="Texture2D" uid="uid://cla3iy5wupngg" path="res://Assets/Player/idle.png" id="3_5pefk"]
-[ext_resource type="Texture2D" path="res://Assets/Player/attack and die.png" id="4_rdvkt"]
+[ext_resource type="Texture2D" uid="uid://dlo50ux1hc8n2" path="res://Assets/Player/attack and die.png" id="4_rdvkt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ok4fa"]
 size = Vector2(9.4, 20.7)
@@ -368,7 +368,6 @@ frame = 10
 
 [node name="Muerto" type="Sprite2D" parent="."]
 position = Vector2(2.2, -0.8)
-scale = Vector2(1, 1)
 texture = ExtResource("4_rdvkt")
 hframes = 5
 vframes = 4
