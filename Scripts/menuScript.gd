@@ -8,6 +8,7 @@ func _ready():
 
 
 func _on_boton_start_pressed():
+	get_tree().change_scene_to_file("res://Scenes/WorldJusto.tscn")
 	pass
 	# Poner la escena del juego
 	#get_tree().change_scene_to_file("res://Scenes/mundo.tscn")

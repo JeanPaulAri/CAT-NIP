@@ -4,7 +4,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
-const LIMIT_Y = 300
+const LIMIT_Y = 500
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -150,12 +150,12 @@ func movePlayer(SPEED):
 	move_and_slide()
 	if(position.y <= LIMIT_Y):
 		position.y = LIMIT_Y
-	if(position.y >= 600):
-		position.y = 600
+	if(position.y >= 680):
+		position.y = 680
 	if(position.x <= camera.limit_left-50):
 		position.x = camera.limit_left-50
 	if Input.is_action_just_pressed("ui_accept"):
-		#CameraAnimated.play("zoom")
+		#CameraAnimatetd.play("zoom")
 		ZoomCamera(0.007)# Rango entre [0-0.1]
 		#AgitarCamera()
 		pass	

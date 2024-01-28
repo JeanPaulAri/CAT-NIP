@@ -1,7 +1,8 @@
 [gd_scene load_steps=23 format=3 uid="uid://dw234wy7bm6a1"]
 
-[ext_resource type="Texture2D" uid="uid://dbu7v2mm2plk" path="res://Assets/Boss/Crystal Knight.png" id="1_flsgt"]
+
 [ext_resource type="Script" path="res://Scripts/boss.gd" id="1_py4en"]
+[ext_resource type="Texture2D" uid="uid://bahf8yu2l6ydv" path="res://Assets/Boss/Crystal Knigth.png" id="2_i6twb"]
 [ext_resource type="Texture2D" uid="uid://bpukigok1ovgn" path="res://Assets/Mecha-stone Golem 0.1/weapon PNG/Laser_sheet.png" id="2_wy6u4"]
 [ext_resource type="Script" path="res://Scripts/Turing M.gd" id="3_0edd5"]
 [ext_resource type="Script" path="res://Scripts/idle.gd" id="4_5fhbh"]
@@ -279,7 +280,7 @@ script = ExtResource("1_py4en")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-3.5, 2)
 scale = Vector2(2, 2)
-texture = ExtResource("1_flsgt")
+texture = ExtResource("2_i6twb")
 hframes = 5
 vframes = 5
 

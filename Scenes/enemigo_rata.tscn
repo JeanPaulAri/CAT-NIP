@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cggruslmpqlyb"]
+[gd_scene load_steps=19 format=3 uid="uid://cmsuk6a2w8ein"]
 
 [ext_resource type="Script" path="res://Scripts/Enemigo_Rata.gd" id="1_4xk5e"]
 [ext_resource type="Texture2D" uid="uid://bpdoxa4m23o1k" path="res://Assets/Player/walk and idle.png" id="2_5egyy"]
