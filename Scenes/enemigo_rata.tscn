@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cmsuk6a2w8ein"]
+[gd_scene load_steps=19 format=3 uid="uid://cggruslmpqlyb"]
 
 [ext_resource type="Script" path="res://Scripts/Enemigo_Rata.gd" id="1_4xk5e"]
 [ext_resource type="Texture2D" uid="uid://bpdoxa4m23o1k" path="res://Assets/Player/walk and idle.png" id="2_5egyy"]
@@ -293,8 +293,8 @@ disabled = true
 
 [node name="AttackCooldown" type="Timer" parent="."]
 
-[connection signal="body_entered" from="Deteccion" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Deteccion" to="." method="_on_deteccion_body_entered"]
+[connection signal="body_entered" from="Deteccion" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="AttackLeft" to="." method="_on_attack_left_body_entered"]
 [connection signal="body_entered" from="AttackRight" to="." method="_on_attack_right_body_entered"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
