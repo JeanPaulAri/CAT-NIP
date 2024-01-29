@@ -293,8 +293,8 @@ disabled = true
 
 [node name="AttackCooldown" type="Timer" parent="."]
 
-[connection signal="body_entered" from="Deteccion" to="." method="_on_deteccion_body_entered"]
 [connection signal="body_entered" from="Deteccion" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Deteccion" to="." method="_on_deteccion_body_entered"]
 [connection signal="body_entered" from="AttackLeft" to="." method="_on_attack_left_body_entered"]
 [connection signal="body_entered" from="AttackRight" to="." method="_on_attack_right_body_entered"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://d1s8aspdn8cod"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_kypyc"]
-[ext_resource type="PackedScene" uid="uid://b6ttc3mwscqi8" path="res://Scenes/background.tscn" id="2_gft8e"]
+[ext_resource type="PackedScene" uid="uid://d4aye30taop7c" path="res://Scenes/background.tscn" id="2_gft8e"]
 [ext_resource type="Texture2D" uid="uid://ewbu1qcafjt1" path="res://Assets/Map/Tileset.png" id="3_7eprf"]
 [ext_resource type="PackedScene" uid="uid://ihd6hugk3ba8" path="res://Scenes/Player.tscn" id="4_d3ew8"]
-[ext_resource type="PackedScene" uid="uid://cggruslmpqlyb" path="res://Scenes/enemigo_rata.tscn" id="5_ifkne"]
+[ext_resource type="PackedScene" uid="uid://cmsuk6a2w8ein" path="res://Scenes/enemigo_rata.tscn" id="5_ifkne"]
 [ext_resource type="PackedScene" uid="uid://cfrhe4fqy3rbp" path="res://Scenes/dash.tscn" id="6_jovni"]
 [ext_resource type="PackedScene" uid="uid://dmme5lj1ruujk" path="res://Scenes/UI/menu_paused.tscn" id="7_h7ce7"]
 [ext_resource type="PackedScene" uid="uid://dw234wy7bm6a1" path="res://Scenes/boss.tscn" id="8_87ube"]
@@ -347,7 +347,7 @@ layer_0/tile_data = PackedInt32Array(2883631, 524288, 9)
 
 [node name="Player" parent="TileMap" groups=["Player"] instance=ExtResource("4_d3ew8")]
 position = Vector2(151, 402)
-scale = Vector2(3.44689, 3.44689)
+scale = Vector2(6.84761, 6.83148)
 
 [node name="Area2D" type="Area2D" parent="TileMap"]
 
@@ -364,7 +364,7 @@ scale = Vector2(1.4, 1.4)
 [node name="MenuPaused" parent="." instance=ExtResource("7_h7ce7")]
 
 [node name="boss" parent="." instance=ExtResource("8_87ube")]
-position = Vector2(1621, 381)
+position = Vector2(2166, 381)
 scale = Vector2(3.824, 3.824)
 
 [connection signal="body_entered" from="TileMap/Area2D" to="." method="_on_area_2d_body_entered"]
