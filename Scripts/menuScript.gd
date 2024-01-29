@@ -4,6 +4,7 @@ extends Node2D
 @onready var soundPlay = $AudioPlay
 
 func _ready():
+	MusicaFondo.button_click()
 	$VBoxContainer/botonStart.grab_focus()
 	
 

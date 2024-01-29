@@ -17,6 +17,10 @@ config/icon="res://icon.svg"
 <<<<<<<HEADconfig/name="Cat-nip"
 <<<<<<<HEADrun/main_scene="res://Scenes/Prefabs_postre.tscn"
 
+[autoload]
+
+MusicaFondo="*res://Scenes/musica_fondo.tscn"
+
 [display]
 
 window/size/viewport_width=1280

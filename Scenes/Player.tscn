@@ -1,7 +1,7 @@
-[gd_scene load_steps=33 format=3 uid="uid://ihd6hugk3ba8"]
+[gd_scene load_steps=33 format=3 uid="uid://dd3nm45u2oioq"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_8jisa"]
-[ext_resource type="PackedScene" uid="uid://cfrhe4fqy3rbp" path="res://Scenes/dash.tscn" id="2_fb4lv"]
+[ext_resource type="PackedScene" uid="uid://bhqbxwg7lxtdr" path="res://Scenes/dash.tscn" id="2_fb4lv"]
 [ext_resource type="Texture2D" uid="uid://dfdlxt88hixd6" path="res://Assets/Player/SpriteCatFinal.png" id="3_f18hk"]
 [ext_resource type="Texture2D" uid="uid://dlo50ux1hc8n2" path="res://Assets/Player/attack and die.png" id="4_rdvkt"]
 [ext_resource type="AudioStream" uid="uid://dhekkdvfikrnx" path="res://Sounds/michimuerte.wav" id="5_fq6rd"]
