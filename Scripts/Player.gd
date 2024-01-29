@@ -24,7 +24,7 @@ var hitstunValue=20
 var hitstun=hitstunValue
 var playerHP=100
 var damagePlayer=50
-
+var rng = RandomNumberGenerator.new()
 @onready var dash=$"../Dash"
 
 @onready var WalkSprite = $WalkSprites
@@ -35,7 +35,12 @@ var damagePlayer=50
 @onready var Colision=$CollisionShape2D
 @onready var camera = $Camera2D
 @onready var CameraAnimated = $AnimationCamera
+@onready var audioMuerto = $MichiMuerto
+@onready var audioDash = $audioDash
 
+@onready var m1 = $M1
+@onready var m2 = $M2
+@onready var m3 = $M3
 func _ready():
 		animationPlayer.play("Right") 
 		print("Player Cargado con Exito")
@@ -56,6 +61,7 @@ func _physics_process(delta):
 			hitstun=hitstunValue
 	if isAlive:
 		if Input.is_action_just_pressed("Dash") and !dash.is_cooldown():
+			audioDash.playing = true
 			dash.start_dash(dashLength)
 			dash.cool_down(dashCooldown)
 		var SPEED=dashSpeed 
@@ -75,6 +81,7 @@ func _physics_process(delta):
 
 func take_damage(damage):
 	print("Player HP: "+str(playerHP))
+	audioMuerto.playing = true
 	playerHP-=damage
 	isHit=true
 	AgitarCamera()
@@ -87,13 +94,26 @@ func die():
 	IdleSprite.visible = false
 	WalkSprite.visible = false
 	DeadSprite.visible=false
+	
+	
 	if(currentDirection == "IdleRight"):
 		animationPlayer.play("DieRight")
 	else:
 		animationPlayer.play("DieLeft")
+	
+	
 
 func attack():
 	if Input.is_action_pressed("ataque"):
+		
+		var randomNumber = int(rng.randf_range(1,4))
+		if(randomNumber == 1):
+			m1.playing = true
+		elif(randomNumber == 2):
+			m2.playing = true
+		elif(randomNumber == 3):
+			m3.playing = true
+		
 		AttackSprite.visible=true
 		IdleSprite.visible = false
 		WalkSprite.visible = false

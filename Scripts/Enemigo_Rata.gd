@@ -85,6 +85,7 @@ func die():
 	attackSprites.visible=true
 	moveSprites.visible = false
 	animationPlayer.play("Die"+enemy_Direction)
+	get_tree().change_scene_to_file("res://Scenes/WorldJusto.tscn")
 
 func _on_attack_left_body_entered(body):
 	if body.is_in_group("Player"):

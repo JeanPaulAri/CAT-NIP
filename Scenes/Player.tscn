@@ -1,11 +1,14 @@
-
-[gd_scene load_steps=28 format=3 uid="uid://ihd6hugk3ba8"]
+[gd_scene load_steps=33 format=3 uid="uid://ihd6hugk3ba8"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_8jisa"]
 [ext_resource type="PackedScene" uid="uid://cfrhe4fqy3rbp" path="res://Scenes/dash.tscn" id="2_fb4lv"]
 [ext_resource type="Texture2D" uid="uid://dfdlxt88hixd6" path="res://Assets/Player/SpriteCatFinal.png" id="3_f18hk"]
-
 [ext_resource type="Texture2D" uid="uid://dlo50ux1hc8n2" path="res://Assets/Player/attack and die.png" id="4_rdvkt"]
+[ext_resource type="AudioStream" uid="uid://dhekkdvfikrnx" path="res://Sounds/michimuerte.wav" id="5_fq6rd"]
+[ext_resource type="AudioStream" uid="uid://c4j2l8bxvfs07" path="res://Sounds/michisonido.wav" id="6_ehulj"]
+[ext_resource type="AudioStream" uid="uid://ciqfcxtse572o" path="res://Sounds/gatomamado1.wav" id="7_iiq64"]
+[ext_resource type="AudioStream" uid="uid://10wkhmyrw8od" path="res://Sounds/gatomamado2.wav" id="8_ei3s7"]
+[ext_resource type="AudioStream" uid="uid://dkgc8lna3ha7i" path="res://Sounds/gatomamado3.wav" id="9_7yial"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ok4fa"]
 size = Vector2(17.6, 15.85)
@@ -438,7 +441,6 @@ script = ExtResource("1_8jisa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.2, -1.3)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ok4fa")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -488,7 +490,6 @@ position = Vector2(0, 3.4)
 
 [node name="ColisionDerecha" type="CollisionShape2D" parent="AreaDerecha"]
 position = Vector2(16.8, -2.7)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_fviy0")
 disabled = true
 
@@ -496,7 +497,6 @@ disabled = true
 
 [node name="ColisionIzquierda" type="CollisionShape2D" parent="AreaIzquierda"]
 position = Vector2(-14.8, 1)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_6pqd0")
 disabled = true
 
@@ -522,10 +522,23 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ColisionBackground"]
-
 position = Vector2(0.4, -1.1)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_n2j0g")
+
+[node name="MichiMuerto" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_fq6rd")
+
+[node name="audioDash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ehulj")
+
+[node name="M1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_iiq64")
+
+[node name="M2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ei3s7")
+
+[node name="M3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_7yial")
 
 [connection signal="body_entered" from="AreaDerecha" to="." method="_on_area_derecha_body_entered"]
 [connection signal="body_entered" from="AreaIzquierda" to="." method="_on_area_izquierda_body_entered"]
